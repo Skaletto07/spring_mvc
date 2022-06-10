@@ -2,6 +2,7 @@ package com.kostkin.mvc;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -18,7 +19,13 @@ public class MyController {
     }
 
     @RequestMapping("/askDetails")
-    public String askEmployeeDetails() {
+    public String askEmployeeDetails(Model model) {
+        Employee employee = new Employee();
+        employee.setName("Ivan");
+        employee.setSurname("Petrov");
+        employee.setSalary(75000);
+
+        model.addAttribute("employee", employee);
         return "ask-emp-details-view";
     }
 
@@ -30,9 +37,9 @@ public class MyController {
         return "show-emp-details-view";
     }*/
     @RequestMapping("/showDetails")
-    public String showEmpDetails(@RequestParam("employeeName") String employeeName, Model model) {
-        employeeName = "Mr." + employeeName;
-        model.addAttribute("empName", employeeName);
+    public String showEmpDetails(@ModelAttribute("employee") Employee employee) {
+
+
         return "show-emp-details-view";
     }
 }

@@ -19,7 +19,10 @@
 <br>
 
 <%--Your name: ${param.employeeName}--%>
-Your name: ${empName}
+<p>Your name: ${employee.name}</p>
+<p>Your surname: ${employee.surname}</p>
+<p>Your salary: ${employee.salary}</p>
+
 
 </body>
 </html>
