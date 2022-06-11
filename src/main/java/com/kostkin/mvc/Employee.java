@@ -1,12 +1,48 @@
 package com.kostkin.mvc;
 
+import com.kostkin.mvc.validation.CheckEmail;
+
+import javax.validation.constraints.*;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Employee {
+    private Map<String, String> languageList;
+    private Map<String, String> departments;
+    private Map<String, String> carBrands;
+    @Size(min = 2, message = "name must be min 2 symbols")
     private String name;
+    @NotBlank(message = "surname is required")
     private String surname;
+    @Min(value = 500, message = "must be greater than 499")
+    @Max(value = 999999, message = "must be less then 1000000")
     private int salary;
     private String department;
 
+    private String carBrand;
+
+    private String[] languages;
+    @Pattern(regexp = "\\d{3}-\\d{2}-\\d{2}", message = "please use pattern XXX-XX-XX")
+    private String phoneNumber;
+
+    @CheckEmail(value = "abc.com", message = "email must ends with abc.com")
+    private String email;
+
     public Employee() {
+        departments = new HashMap<>();
+        departments.put("HR", "Human resources");
+        departments.put("IT", "Information technology");
+        departments.put("Sales", "Sales");
+
+        carBrands = new HashMap<>();
+        carBrands.put("BMW", "BMW");
+        carBrands.put("Audi", "Audi");
+        carBrands.put("Mercedes-Benz", "MB");
+
+        languageList = new HashMap<>();
+        languageList.put("English", "EN");
+        languageList.put("French", "FN");
+        languageList.put("Deutsch", "DE");
     }
 
     public String getName() {
@@ -39,6 +75,62 @@ public class Employee {
 
     public void setDepartment(String department) {
         this.department = department;
+    }
+
+    public Map<String, String> getDepartments() {
+        return departments;
+    }
+
+    public String getCarBrand() {
+        return carBrand;
+    }
+
+    public void setCarBrand(String carBrand) {
+        this.carBrand = carBrand;
+    }
+
+    public void setDepartments(Map<String, String> departments) {
+        this.departments = departments;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String[] getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(String[] languages) {
+        this.languages = languages;
+    }
+
+    public Map<String, String> getCarBrands() {
+        return carBrands;
+    }
+
+    public void setCarBrands(Map<String, String> carBrands) {
+        this.carBrands = carBrands;
+    }
+
+    public Map<String, String> getLanguageList() {
+        return languageList;
+    }
+
+    public void setLanguageList(Map<String, String> languageList) {
+        this.languageList = languageList;
     }
 
     @Override
