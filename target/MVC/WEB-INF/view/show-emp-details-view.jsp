@@ -31,8 +31,9 @@
         <li>  ${lang}  </li>
     </c:forEach>
     </ul>
-
 </p>
+<P>Phone number: ${employee.phoneNumber}</P>
+<p>Email: ${employee.email}</p>
 
 
 </body>
